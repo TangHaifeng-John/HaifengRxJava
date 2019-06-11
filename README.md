@@ -1,3 +1,2 @@
 # LittleRxJava
-Little RxJava
 # HaifengRxJava
