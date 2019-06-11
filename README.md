@@ -1,2 +1,1 @@
-# LittleRxJava
-# HaifengRxJava
+仿造RxJava写的一个类似RxJava的框架
