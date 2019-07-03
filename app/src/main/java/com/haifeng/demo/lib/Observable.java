@@ -1,6 +1,7 @@
 package com.haifeng.demo.lib;
 
 
+
 public abstract class Observable<T> implements ObservableSource<T> {
     @Override
     public void subscribe(Observer<? super T> observer) {
@@ -22,7 +23,12 @@ public abstract class Observable<T> implements ObservableSource<T> {
         return new ObservableMap<T, R>(this, function);
     }
 
+
     public final Observable<T> observerOn(Scheduler scheduler) {
         return new ObservableObserverOn<T>(this, scheduler);
     }
+
+
+
+
 }

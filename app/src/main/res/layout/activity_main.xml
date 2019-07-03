@@ -16,4 +16,12 @@
         android:text="测试海峰Rxjava"
         />
 
+
+    <Button
+        android:id="@+id/send_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送数据"
+        />
+
 </LinearLayout>

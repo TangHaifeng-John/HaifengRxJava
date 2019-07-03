@@ -1,6 +1,7 @@
 package com.haifeng.demo.test;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,12 +15,18 @@ import com.haifeng.demo.lib.Observer;
 import com.haifeng.demo.lib.Schedulers;
 import com.joy.littlerx.R;
 
+import java.util.Queue;
+
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = "test";
 
     private Button haifengTest;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,28 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private void initClickListener() {
 
         haifengTest.setOnClickListener(this);
+        final TestZip testZip =new TestZip();
+
+        findViewById(R.id.send_data).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testZip.zipObservers[0].queue.offer(1);
+                testZip.test();
+                testZip.zipObservers[0].queue.offer(2);
+                testZip.test();
+                testZip.zipObservers[0].queue.offer(5);
+                testZip.test();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        testZip.zipObservers[1].queue.offer("3");
+                        testZip.test();
+                        testZip.zipObservers[1].queue.offer("4");
+                        testZip.test();
+                    }
+                },3000);
+            }
+        });
     }
 
     @Override
